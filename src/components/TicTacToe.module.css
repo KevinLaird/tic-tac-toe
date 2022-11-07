@@ -2,3 +2,16 @@
   display: flex;
   justify-content: center;
 }
+
+.error {
+  background: red;
+  color: white;
+}
+
+.header {
+  background: green;
+}
+
+.headerContainer {
+  padding: 1px;
+}
