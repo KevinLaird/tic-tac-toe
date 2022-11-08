@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header></header>
       <main>
-        <TicTacToe boardSize={3} />
+        <TicTacToe />
       </main>
     </div>
   );

@@ -3,8 +3,9 @@ import Board from './Board';
 
 import styles from './TicTacToe.module.css';
 
-const TicTacToe = ({ boardSize }) => {
+const TicTacToe = () => {
   const [turn, setTurn] = useState('x');
+  const [boardSize, setBoardSize] = useState(3);
   const [error, setError] = useState('');
 
   return (
@@ -16,6 +17,8 @@ const TicTacToe = ({ boardSize }) => {
       >
         <h1>{error ? error : 'Tic Tac Toe'}</h1>
       </div>
+
+      <input type="text"></input>
       <h1>Turn: {turn}</h1>
       <Board
         boardSize={boardSize}
