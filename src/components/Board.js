@@ -3,32 +3,33 @@ import styles from './TicTacToe.module.css';
 
 import Cell from './Cell';
 
-const Board = ({ boardSize, turn, setTurn, setError }) => {
-  const getBoard = (boardSize) => {
-    const board = Array.from(new Array(boardSize), () => []);
-    let count = 0;
-    board.forEach((element, columnIndex) => {
-      const row = [];
-      for (let rowIndex = 0; rowIndex <= boardSize - 1; rowIndex++) {
-        row.push(
+const Board = ({ board, updateBoardHandler, turn, setTurn, setError }) => {
+  const getBoard = (board) => {
+    const boardJsx = [];
+    board.forEach((row, rowIndex) => {
+      const rowJsx = [];
+      row.forEach((cell) => {
+        rowJsx.push(
           <Cell
-            key={count}
-            id={count}
+            key={`${rowIndex}-${cell.columnIndex}-${cell.id}`}
+            value={cell.value}
+            rowIndex={cell.rowIndex}
+            columnIndex={cell.columnIndex}
+            updateBoardHandler={updateBoardHandler}
             turn={turn}
             setTurn={setTurn}
             setError={setError}
           />,
         );
-        count++;
-      }
-      board[columnIndex].push(<tr key={columnIndex}>{row}</tr>);
+      });
+      boardJsx.push(<tr key={rowIndex}>{rowJsx}</tr>);
     });
-    return board;
+    return boardJsx;
   };
 
   return (
     <table className={styles.container}>
-      <tbody>{getBoard(boardSize)}</tbody>
+      <tbody>{getBoard(board)}</tbody>
     </table>
   );
 };

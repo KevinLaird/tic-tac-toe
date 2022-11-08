@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import styles from './Cell.module.css';
 
-const Cell = ({ id, turn, setTurn, setError }) => {
+const Cell = ({
+  value,
+  updateBoardHandler,
+  rowIndex,
+  columnIndex,
+  turn,
+  setTurn,
+  setError,
+}) => {
   const [clicked, setClicked] = useState(false);
-  const [point, setPoint] = useState('');
 
   const handleClick = () => {
-    if (point) {
+    if (value !== '-') {
       setError('Already clicked!');
       return;
     }
+    updateBoardHandler(rowIndex, columnIndex, turn);
     setClicked(true);
-    setPoint(turn);
     if (turn === 'x') {
       setTurn('o');
     } else {
@@ -25,7 +32,7 @@ const Cell = ({ id, turn, setTurn, setError }) => {
       onClick={handleClick}
       className={`${styles.cell} ${clicked ? styles.clicked : ''}`}
     >
-      {point && <h1>{point}</h1>}
+      {value !== '-' && <h1>{value}</h1>}
     </td>
   );
 };

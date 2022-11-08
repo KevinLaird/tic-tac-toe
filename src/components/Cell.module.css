@@ -2,8 +2,14 @@
   border: 1px solid grey;
   width: 100px;
   height: 100px;
+  border-radius: 6px;
+}
+
+.cell:hover {
+  cursor: pointer;
 }
 
 .clicked {
   background-color: green;
+  color: white;
 }
