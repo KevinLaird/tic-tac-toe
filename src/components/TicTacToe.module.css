@@ -5,7 +5,6 @@
 
 .error {
   background: red;
-  color: white;
 }
 
 .header {
@@ -13,5 +12,6 @@
 }
 
 .headerContainer {
+  color: white;
   padding: 1px;
 }
