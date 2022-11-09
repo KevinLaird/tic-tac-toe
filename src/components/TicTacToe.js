@@ -121,35 +121,52 @@ const TicTacToe = () => {
   ) : (
     <>
       <h1>Please select a board size</h1>
-      <button type="button" onClick={() => boardSizeHandler(3)}>
-        3*3
-      </button>
-      <button type="button" onClick={() => boardSizeHandler(4)}>
-        4*4
-      </button>
-      <button type="button" onClick={() => boardSizeHandler(5)}>
-        5*5
-      </button>
+      <div className={styles.buttonContainer}>
+        <button
+          className={styles.button}
+          type="button"
+          onClick={() => boardSizeHandler(3)}
+        >
+          3*3
+        </button>
+        <button
+          className={styles.button}
+          type="button"
+          onClick={() => boardSizeHandler(4)}
+        >
+          4*4
+        </button>
+        <button
+          className={styles.button}
+          type="button"
+          onClick={() => boardSizeHandler(5)}
+        >
+          5*5
+        </button>
+      </div>
     </>
   );
 
   return (
-    <div>
+    <div className={styles.page}>
       {header}
-
       {winner && winner !== "It's a tie!" && (
         <h1>Congratulations! Player {winner} won!</h1>
       )}
       {winner === "It's a tie!" && <h1>That's a tie. Nobody wins!</h1>}
-      {!winner && (
+      {board && (
         <>
           <h1>Turn: {turn}</h1>
-          {boardJsx}
+          <button
+            className={styles.button}
+            type="button"
+            onClick={() => boardSizeHandler(null)}
+          >
+            Reset
+          </button>
         </>
       )}
-      <button type="button" onClick={() => boardSizeHandler(null)}>
-        reset
-      </button>
+      {!winner && boardJsx}
     </div>
   );
 };

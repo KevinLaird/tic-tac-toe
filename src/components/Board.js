@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TicTacToe.module.css';
+import styles from './Board.module.css';
 
 import Cell from './Cell';
 
